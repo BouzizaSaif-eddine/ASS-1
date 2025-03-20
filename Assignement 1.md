@@ -193,13 +193,25 @@ On a donc ici une boucle `for` pour laquelle, à chaque itération, on met à jo
 
 Pour tous ces parcours de listes, il est conseillé d'utiliser des noms de variables pertinents, afin de limiter les confusions dans la nature des éléments manipulés. Par exemple, on pourra utiliser `i` ou `j` pour noter des indices, mais on préfèrera `elem` ou `val` pour désigner les éléments de la liste.
 
-(ex4.1)=
+(ex4.1)= 
 ### Exercice
 
 ```{admonition} Exercice 4.1 : Argmax
-Écrivez une fonction en Python qui permette de calculer l'argmax d'une liste, c'est-à-dire l'indice auquel est stockée la valeur maximale de la liste.
-Si cette valeur maximale est présente plusieurs fois dans la liste, on retournera l'indice de sa première occurrence.
+def argmax(lst):
+    if not lst:
+        raise ValueError("La liste ne peut pas être vide.")
+    
+    max_value = lst[0]
+    max_index = 0
+    
+    for i, value in enumerate(lst):
+        if value > max_value:
+            max_value = value
+            max_index = i
+    
+    return max_index
 ```
+
 
 <div id="pad_4.1" class="pad"></div>
 <script>
@@ -347,11 +359,12 @@ print(sorted(liste))
 ```
 
 <div id="pad_4.2" class="pad"></div>
-<script>
-    Pythonpad('pad_4.2', 
+Pythonpad('pad_4.2', 
               {'id': '4.2', 
                'title': 'Testez votre solution ici', 
                'src': '# Complétez ce code'})
+<script>
+    
 </script>
 
 ````{admonition} Solution
